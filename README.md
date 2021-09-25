@@ -1,0 +1,2 @@
+# RelivedMobs
+This Mod is focusing in spice up the Vanilla World, by adding new Mobs, real ones like Birds and Fishes, but also fantasy ones like raptors, a terracotta mecha Golem or a Wood beast similar to a angry bear. Also new Dungeons and other Structures, new mechanics, new Vegetation like Flowers and bushes for example. Also much more stuff and plans are coming in the future! So stay tuned!# RelivedMobs

@@ -1,0 +1,7 @@
+Java Launcher: /home/trimsky/.gradle/jdks/jdk8u302-b08/bin/java
+Arguments: '--inJar, /home/trimsky/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.16.5-36.2.4/forge-1.16.5-36.2.4-injected.jar, --outJar, /home/trimsky/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.16.5-36.2.4_mapped_official_1.16.5/forge-1.16.5-36.2.4_mapped_official_1.16.5.jar, --logFile, accesstransform.log, --atFile, /home/trimsky/BarrenIsles/build/_atJar_5/parent_at.cfg'
+Classpath:
+ - /home/trimsky/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/accesstransformers/3.0.1/accesstransformers-3.0.1-fatjar.jar
+Working directory: /home/trimsky/BarrenIsles/build/_atJar_5
+Main class: net.minecraftforge.accesstransformer.TransformerProcessor
+====================================

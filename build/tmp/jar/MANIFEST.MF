@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Specification-Title: relivedmobs
+Specification-Vendor: relivedmobssareus
+Specification-Version: 1
+Implementation-Title: Relived Mobs
+Implementation-Version: forge-1.16.5-1.0.7
+Implementation-Vendor: relivedmobssareus
+Implementation-Timestamp: 2021-09-25T20:59:49+0800
+
