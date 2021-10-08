@@ -7,10 +7,12 @@ import net.minecraft.entity.EntityClassification;
 import net.minecraft.world.biome.MobSpawnInfo;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
+import net.minecraftforge.fml.ExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig.Type;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -19,10 +21,11 @@ import relivedmobs.client.renderer.AnacondaRenderer;
 import relivedmobs.client.renderer.BisonRenderer;
 import relivedmobs.common.entity.monster.AnacondaEntity;
 import relivedmobs.common.entity.passive.BisonEntity;
-import relivedmobs.init.ModEntities;
-import relivedmobs.init.ModItems;
+import relivedmobs.common.init.ModEntities;
+import relivedmobs.common.init.ModItems;
+import relivedmobs.core.config.ConfigScreen;
+import relivedmobs.core.config.RelivedMobsConfig;
 import software.bernie.geckolib3.GeckoLib;
-import net.minecraft.entity.ai.attributes.Attributes;
 
 //The value here should match an entry in the META-INF/mods.toml file
 @Mod(RelivedMobsMod.MODID)
@@ -36,10 +39,14 @@ public class RelivedMobsMod
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::preInit);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::entityAttributeCreationEvent);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::ModificateAttributes);
-		
 		ModEntities.register(FMLJavaModLoadingContext.get().getModEventBus());
 		ModItems.register(FMLJavaModLoadingContext.get().getModEventBus());
+		
+		ModLoadingContext.get().registerExtensionPoint(
+                ExtensionPoint.CONFIGGUIFACTORY,
+                () -> (mc, screen) -> new ConfigScreen(screen));
+		
+		ModLoadingContext.get().registerConfig(Type.COMMON, RelivedMobsConfig.SPEC, "relivedmobs-common.toml");
 		
 		MinecraftForge.EVENT_BUS.register(this);
 		
@@ -62,17 +69,21 @@ public class RelivedMobsMod
 	
 	public void onBiomesLoad(BiomeLoadingEvent event) {
         System.out.println(event.getName());
-        if(event.getName().toString().equals("minecraft:jungle") 
+        if( RelivedMobsConfig.spawn_anaconda.get().booleanValue() == true && (event.getName().toString().equals("minecraft:jungle") 
         		|| event.getName().toString().equals("minecraft:jungle_edge") 
-                || event.getName().toString().equals("minecraft:modified_jungle") ) 
+                || event.getName().toString().equals("minecraft:modified_jungle")) ) 
         {
-        	event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(RelivedMobsEntities.anaconda.get(), 1, 2, 80));
-        } else if(event.getName().toString().equals("minecraft:savanna") 
+        	event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(RelivedMobsEntities.anaconda.get(), 
+        														RelivedMobsConfig.anaconda_min_spawn_value.get(), 
+        														RelivedMobsConfig.anaconda_max_spawn_value.get(), 85));
+        } else if( RelivedMobsConfig.spawn_bison.get().booleanValue() == true && (event.getName().toString().equals("minecraft:savanna") 
         		|| event.getName().toString().equals("minecraft:savanna_plateau") 
                 || event.getName().toString().equals("minecraft:shattered_savanna")
-                || event.getName().toString().equals("minecraft:shattered_savanna_plateau")) 
+                || event.getName().toString().equals("minecraft:shattered_savanna_plateau"))) 
         {
-        	event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(RelivedMobsEntities.bison.get(), 3, 8, 80));
+        	event.getSpawns().getSpawner(EntityClassification.CREATURE).add(new MobSpawnInfo.Spawners(RelivedMobsEntities.bison.get(), 
+        															RelivedMobsConfig.bison_min_spawn_value.get().intValue(), 
+        															RelivedMobsConfig.bison_max_spawn_value.get().intValue(), 80));
         }
     }
  
@@ -81,9 +92,5 @@ public class RelivedMobsMod
 			event.put(RelivedMobsEntities.anaconda.get(), AnacondaEntity.createAnacondaAttributes().build());
 			event.put(RelivedMobsEntities.bison.get(), BisonEntity.createBisonAttributes().build());
 	}
-	
-    public void ModificateAttributes(EntityAttributeModificationEvent e) {
-        e.add(RelivedMobsEntities.bison.get(), Attributes.ATTACK_DAMAGE, 2.5D);
-    }
 }
 

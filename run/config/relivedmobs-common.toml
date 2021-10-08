@@ -1,0 +1,59 @@
+
+[RelivedMobsConfig]
+	#Will the bisons spawn? Default value is true
+	"Spawn bisons" = true
+	#Will the sea horses spawn? Default value is true
+	"Spawn sea horses" = true
+	#Default value is 0.0. Not added yet.
+	"Sea horse's speed" = 0.0
+	#Default value is 0.7.
+	"Anaconda's speed" = 0.7
+	#Default value is 0.0. Not added yet.
+	"Puffin's health" = 0.0
+	#Minimum spawn value for bison.Default value is 3.
+	"Minimum bison spawn value" = 3
+	#Default value is 0.0. Not added yet.
+	"Sea horse's attack damage" = 0.0
+	#Default value is 0.0. Not added yet.
+	"Puffin's attack damage" = 0.0
+	#Will the anacondas spawn? Default value is true
+	"Spawn anacondas" = true
+	#Default value is 0.0. Not added yet.
+	"Puffin's speed" = 0.0
+	#Will the fallow deers spawn? Default value is true
+	"Spawn fallow deers" = true
+	#Default value is 0.4.
+	"Bison's speed" = 0.4
+	#Default value is 2.5.
+	"Bison's attack damage" = 2.5
+	#Default value is 0.0. Not added yet.
+	"Fallow deer's attack damage" = 0.0
+	#Default value is 0.0. Not added yet.
+	"Fallow deer's speed" = 0.0
+	#Default value is 15.0.
+	"Bison's health" = 15.0
+	#Default value is 0.0. Not added yet.
+	"Hyena's health" = 0.0
+	#Default value is 0.0. Not added yet.
+	"Sea horse's health" = 0.0
+	#Maximum spawn value for bison.Default value is 5.
+	"Maximum bison spawn value" = 5
+	#Minimum spawn value for anaconda.Default value is 1.
+	"Minimum anaconda spawn value" = 1
+	#Maximum spawn value for anaconda.Default value is 2.
+	"Maximum anaconda spawn value" = 2
+	#Default value is 20.0.
+	"Anaconda's health" = 20.0
+	#Will the hyenas spawn? Default value is true
+	"Spawn hyenas" = true
+	#Default value is 0.0. Not added yet.
+	"Hyena's attack damage" = 0.0
+	#Default value is 3.0.
+	"Anaconda's attack damage" = 3.0
+	#Default value is 0.0. Not added yet.
+	"Fallow deer's health" = 0.0
+	#Default value is 0.0. Not added yet.
+	"Hyena's speed" = 0.0
+	#Will the puffins spawn? Default value is true
+	"Spawn puffins" = true
+

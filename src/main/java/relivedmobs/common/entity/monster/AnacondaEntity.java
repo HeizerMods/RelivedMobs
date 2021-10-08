@@ -20,6 +20,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.vector.Vector3d;
 import net.minecraft.world.World;
+import relivedmobs.core.config.RelivedMobsConfig;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -30,7 +31,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 
 
 public class AnacondaEntity extends CreatureEntity implements IAnimatable {
-
+	
 	public AnacondaEntity(EntityType<? extends AnacondaEntity> mob, World world) {
 		super(mob, world);
 	}
@@ -39,9 +40,9 @@ public class AnacondaEntity extends CreatureEntity implements IAnimatable {
 
 	public static MutableAttribute createAnacondaAttributes() {
 		return MobEntity.createMobAttributes()
-	                .add(Attributes.MAX_HEALTH, 20)
-	                .add(Attributes.MOVEMENT_SPEED, 0.7F)
-	                .add(Attributes.ATTACK_DAMAGE, 3);
+	                .add(Attributes.MAX_HEALTH, RelivedMobsConfig.anaconda_health.get())
+	                .add(Attributes.MOVEMENT_SPEED, RelivedMobsConfig.anaconda_speed.get())
+	                .add(Attributes.ATTACK_DAMAGE, RelivedMobsConfig.anaconda_attack_damage.get());
 	}
 
 	    private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
