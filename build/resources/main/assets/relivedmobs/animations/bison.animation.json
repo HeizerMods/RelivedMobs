@@ -111,7 +111,7 @@
 			}
 		},
 		"animation.bison.idle": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 0.66667,
 			"bones": {
 				"Head": {
@@ -184,7 +184,7 @@
 			}
 		},
 		"animation.bison.idle_2": {
-			"loop": true,
+			"loop": false,
 			"animation_length": 0.5,
 			"bones": {
 				"Main": {

@@ -7,7 +7,7 @@ import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 
 public class PuffinRenderer extends GeoEntityRenderer<PuffinEntity>{
 
-	protected PuffinRenderer(EntityRendererManager renderManager) {
+	public PuffinRenderer(EntityRendererManager renderManager) {
 		super(renderManager, new PuffinModel());
 	}
 

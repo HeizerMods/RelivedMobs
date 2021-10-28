@@ -16,6 +16,12 @@ public class ModItems {
     static {
     	bison_fur = ITEMS.register("bison_fur",
             () -> new Item(new Item.Properties().tab(ModGroups.RELIVED_MOBS)));
+    	saw_fish_tooth = ITEMS.register("saw_fish_tooth",
+                () -> new Item(new Item.Properties().tab(ModGroups.RELIVED_MOBS)));
+    	idol_vase = ITEMS.register("idol_vase",
+                () -> new Item(new Item.Properties().tab(ModGroups.RELIVED_MOBS)));
+    	bison_idol = ITEMS.register("bison_idol",
+                () -> new Item(new Item.Properties().tab(ModGroups.RELIVED_MOBS)));
     	bison_spawn_egg = ITEMS.register("bison_spawn_egg", 
     		() -> new ModSpawnEggItem(() -> RelivedMobsEntities.bison.get(), 0x261b02, 0xaba59a,
 					new Item.Properties().tab(ModGroups.RELIVED_MOBS)));

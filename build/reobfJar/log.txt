@@ -1,5 +1,5 @@
-Java Launcher: /home/trimsky/.gradle/jdks/jdk8u302-b08/bin/java
-Arguments: '--in-jar, /home/trimsky/RelivedMobs/build/libs/RelivedMobs-forge-1.16.5-1.0.2-beta.jar, --out-jar, /home/trimsky/RelivedMobs/build/reobfJar/output.jar, --srg-in, /home/trimsky/RelivedMobs/build/createMcpToSrg/output.tsrg, --live'
+Java Launcher: /usr/lib/jvm/java-8-openjdk/bin/java
+Arguments: '--in-jar, /home/trimsky/RelivedMobs/build/libs/RelivedMobs-forge-1.16.5-1.0.3-beta.jar, --out-jar, /home/trimsky/RelivedMobs/build/reobfJar/output.jar, --srg-in, /home/trimsky/RelivedMobs/build/createMcpToSrg/output.tsrg, --live'
 Classpath:
  - /home/trimsky/.gradle/caches/forge_gradle/maven_downloader/net/md-5/SpecialSource/1.10.0/SpecialSource-1.10.0-shaded.jar
  - /home/trimsky/.gradle/caches/forge_gradle/deobf_dependencies/software/bernie/geckolib/geckolib-forge-1.16.5/3.0.45_mapped_official_1.16.5/geckolib-forge-1.16.5-3.0.45_mapped_official_1.16.5.jar
@@ -79,8 +79,8 @@ Loading mappings... 50%
 0 packages, 5447 classes, 21481 fields, 38359 methods
 Remapping final jar
 Remapping jar...  1%
-Remapping jar... 10%
-Remapping jar... 20%
+Remapping jar... 11%
+Remapping jar... 21%
 Remapping jar... 30%
 Remapping jar... 40%
 Remapping jar... 50%

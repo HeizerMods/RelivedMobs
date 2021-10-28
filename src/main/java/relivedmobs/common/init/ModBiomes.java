@@ -6,9 +6,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import relivedmobs.core.RelivedMobsMod;
-/*
-import static relivedmobs.api.biome.RelivedMobsBiomes.*;
-*/
+
 public class ModBiomes {
 	public static final DeferredRegister<Biome> BIOMES = DeferredRegister.create(ForgeRegistries.BIOMES, RelivedMobsMod.MODID);
 	public static void register(IEventBus bus) {

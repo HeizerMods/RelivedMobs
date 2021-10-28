@@ -70,7 +70,7 @@ public class BisonEntity extends CreatureEntity implements IAnimatable{
 	    this.goalSelector.addGoal(6, new MeleeAttackGoal(this, 0.3D, false));
 	    this.goalSelector.addGoal(9, new LookAtGoal(this, PlayerEntity.class, 8.0F));
 	    this.goalSelector.addGoal(9, new LookRandomlyGoal(this));   
-	    this.targetSelector.addGoal(2, new TargetWithoutShift(this, true));
+	    this.targetSelector.addGoal(2, new TargetWithoutShift(this));
 	}
 
 	public void tick() {
@@ -113,8 +113,8 @@ public class BisonEntity extends CreatureEntity implements IAnimatable{
 	
 	private class TargetWithoutShift extends NearestAttackableTargetGoal<PlayerEntity> {
 
-		public TargetWithoutShift(MobEntity mob, boolean mustSee) {
-			super(mob, PlayerEntity.class, mustSee);
+		public TargetWithoutShift(MobEntity mob) {
+			super(mob, PlayerEntity.class, true);
 		}
 		public boolean canUse() {
 			if (this.randomInterval > 0 && this.mob.getRandom().nextInt(this.randomInterval) != 0) {

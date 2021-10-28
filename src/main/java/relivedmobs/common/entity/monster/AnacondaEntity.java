@@ -29,7 +29,6 @@ import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 
-
 public class AnacondaEntity extends CreatureEntity implements IAnimatable {
 	
 	public AnacondaEntity(EntityType<? extends AnacondaEntity> mob, World world) {
