@@ -6,7 +6,6 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.Attributes;
-import net.minecraft.entity.ai.goal.FindWaterGoal;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
@@ -14,6 +13,7 @@ import net.minecraft.entity.ai.goal.RandomSwimmingGoal;
 import net.minecraft.entity.passive.WaterMobEntity;
 import net.minecraft.entity.passive.fish.AbstractFishEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraft.entity.ai.goal.LookRandomlyGoal;
@@ -40,7 +40,6 @@ public class DwarfCrocodileEntity extends WaterMobEntity implements IAnimatable{
 	
 	@Override
 	protected void registerGoals() {
-		this.goalSelector.addGoal(0, new FindWaterGoal(this));
         this.goalSelector.addGoal(0, new MeleeAttackGoal(this, 1.2F, true));
         this.goalSelector.addGoal(2, new LookRandomlyGoal(this));
         this.goalSelector.addGoal(2, new WalkingOnBeach(0.7F));
@@ -78,9 +77,9 @@ public class DwarfCrocodileEntity extends WaterMobEntity implements IAnimatable{
 
 	private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
 		if (event.isMoving() && !this.isInWater()) {
-	        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.west_african_crocodile.walk", true));
-	    } else if(this.isInWater() && this.isInWater()){
-	    	event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.west_african_crocodile.swim", true));
+	        event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.west_african_dwarf_crocodile.walk", true));
+	    } else if(this.isInWater()){
+	    	event.getController().setAnimation(new AnimationBuilder().addAnimation("animation.west_african_dwarf_crocodile.swim", true));
 	    } 
 		return PlayState.CONTINUE;
 	}
@@ -107,7 +106,7 @@ public class DwarfCrocodileEntity extends WaterMobEntity implements IAnimatable{
 			if(mob.isInWaterOrBubble() && mob.getRandom().nextInt(20) == 0 && !this.mob.isVehicle()) {
 				 Vector3d vector3d = this.getPosition();
 		         if (vector3d == null) {
-		            return false;
+		        	 return false;
 		         } else {
 		            this.wantedX = vector3d.x;
 		            this.wantedY = vector3d.y;
@@ -135,9 +134,9 @@ public class DwarfCrocodileEntity extends WaterMobEntity implements IAnimatable{
 						for(int k = pos.getY(); k < pos.getY() + 5; k++) 
 						{ 
 							BlockPos blockPos = new BlockPos(i, k, j);
-							BlockState blockState = this.mob.level.getBlockState(pos);
+							FluidState blockState = this.mob.level.getFluidState(pos);
 							
-							if(blockState.getFluidState().isEmpty() && BlockUtil.isAir(mob, blockPos.above()) ) 
+							if(blockState.isEmpty() && BlockUtil.isAir(mob, blockPos.above()) ) 
 							{
 								mob.moveTo(i, k+1, j);
 								isOnSwamp = true;
@@ -199,5 +198,10 @@ public class DwarfCrocodileEntity extends WaterMobEntity implements IAnimatable{
 					}
 				}
 		}
+	}
+	
+	@Override
+	protected float getBlockJumpFactor() {
+	      return this.level.getBlockState(this.getBlockPosBelowThatAffectsMyMovement()).getBlock().getJumpFactor();
 	}
 }
